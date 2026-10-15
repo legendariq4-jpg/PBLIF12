@@ -39,7 +39,4 @@ index.html          halaman awal (mengarah ke beranda)
 pages/              halaman aplikasi
 assets/css/         variables, base, layout, components
 assets/js/          storage (pengganti database), utils, layout, skrip tiap halaman
-docs/flowchart/     flowchart dan workflow (.drawio)
-docs/wireframe/     desain Figma
-docs/laporan/       laporan proyek
 ```
