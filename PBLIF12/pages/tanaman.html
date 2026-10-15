@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tanaman saya | Rimbun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+</head>
+<body data-active="tanaman">
+  <div class="app">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main">
+      <header class="topbar" id="topbar"></header>
+      <main class="content">
+        <div class="page-head">
+          <div>
+            <span class="eyebrow">Koleksi</span>
+            <h1>Tanaman saya</h1>
+            <p>Tambah, ubah, hapus, dan cari data tanamanmu.</p>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <select id="filterKondisi" aria-label="Filter kondisi"></select>
+          <span class="muted" id="resultCount"></span>
+        </div>
+
+        <div class="cards-grid" id="plantGrid"></div>
+
+        <div class="modal-backdrop" id="modal">
+          <form class="modal" id="plantForm" novalidate>
+            <h2 id="modalTitle">Tambah tanaman</h2>
+            <div class="field" id="rowNama">
+              <label for="fNama">Nama tanaman</label>
+              <input id="fNama" type="text" placeholder="Contoh: Monstera Deliciosa" />
+              <span class="error">Nama tanaman wajib diisi.</span>
+            </div>
+            <div class="field" id="rowJenis">
+              <label for="fJenis">Jenis tanaman</label>
+              <input id="fJenis" type="text" list="jenisList" placeholder="Contoh: Tanaman tropis" />
+              <datalist id="jenisList"><option>Tanaman tropis</option><option>Tanaman berbunga</option><option>Sukulen</option><option>Herbal</option></datalist>
+              <span class="error">Jenis tanaman wajib diisi.</span>
+            </div>
+            <div class="field" id="rowTanggal">
+              <label for="fTanggal">Tanggal tanam / beli</label>
+              <input id="fTanggal" type="date" />
+              <span class="error">Tanggal wajib diisi.</span>
+            </div>
+            <div class="field" id="rowLokasi">
+              <label for="fLokasi">Lokasi</label>
+              <input id="fLokasi" type="text" placeholder="Contoh: Ruang keluarga" />
+              <span class="error">Lokasi wajib diisi.</span>
+            </div>
+            <div class="field">
+              <label for="fKondisi">Kondisi</label>
+              <select id="fKondisi"></select>
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn btn-ghost" id="cancelBtn">Batal</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../assets/js/utils.js"></script>
+  <script src="../assets/js/layout.js"></script>
+  <script src="../assets/js/tanaman.js"></script>
+</body>
+</html>

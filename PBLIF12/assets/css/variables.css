@@ -1,0 +1,25 @@
+/* Variabel desain Rimbun: warna dan font diambil dari desain Figma */
+:root {
+  --green-900: #153828;
+  --green-800: #1d4a39;
+  --green-700: #2a5d49;
+  --green-100: #e5efe6;
+  --cream: #f7f4ee;
+  --paper: #fffdf9;
+  --ink: #1b2a22;
+  --muted: #6b7a72;
+  --line: #e8e2d6;
+  --terracotta: #c4623d;
+  --terracotta-soft: #f7e3da;
+  --water-soft: #e3eef3;
+  --sun-soft: #faf0dc;
+  --danger: #b3412b;
+
+  --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 2px rgba(27, 42, 34, 0.05), 0 4px 14px rgba(27, 42, 34, 0.05);
+  --sidebar-w: 240px;
+}
