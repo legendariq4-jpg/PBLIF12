@@ -29,10 +29,7 @@ mengelola jadwal perawatan, mencari data, dan melihat rekap aktivitas perawatan.
 HTML, CSS, JavaScript (tanpa framework). Data sementara disimpan di `localStorage` browser.
 Tahap berikutnya: PHP dan MySQL (XAMPP/Laragon).
 
-## Cara Menjalankan
-1. Clone repo ini.
-2. Buka folder di Visual Studio Code.
-3. Pasang ekstensi **Live Server**, klik kanan `index.html`, pilih **Open with Live Server**.
+
 
 Untuk mengembalikan data contoh, buka konsol browser (F12) dan jalankan `Storage.resetDemo()`, lalu muat ulang halaman.
 
