@@ -22,7 +22,6 @@ mengelola jadwal perawatan, mencari data, dan melihat rekap aktivitas perawatan.
 | Kelola jenis tanaman | FR-01 | Selesai |
 | Kelola jenis perawatan | FR-03 | Selesai |
 | Rekap per periode | FR-07 | Selesai |
-| Login | NFR-03 | Belum |
 | Backend PHP + MySQL | semua | Belum |
 
 ## Teknologi
