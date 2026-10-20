@@ -19,9 +19,9 @@ mengelola jadwal perawatan, mencari data, dan melihat rekap aktivitas perawatan.
 | Tanaman saya: tambah, tampil, ubah, hapus | FR-02 | Selesai |
 | Pencarian dan filter kondisi tanaman | FR-05 | Selesai |
 | Jadwal perawatan: tambah, centang selesai, hapus | FR-04 | Selesai |
-| Kelola jenis tanaman | FR-01 | Belum |
-| Kelola jenis perawatan | FR-03 | Belum |
-| Rekap per periode | FR-07 | Belum |
+| Kelola jenis tanaman | FR-01 | Selesai |
+| Kelola jenis perawatan | FR-03 | Selesai |
+| Rekap per periode | FR-07 | Selesai |
 | Login | NFR-03 | Belum |
 | Backend PHP + MySQL | semua | Belum |
 
