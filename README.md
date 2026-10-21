@@ -32,10 +32,4 @@ Tahap berikutnya: PHP dan MySQL (XAMPP/Laragon).
 
 Untuk mengembalikan data contoh, buka konsol browser (F12) dan jalankan `Storage.resetDemo()`, lalu muat ulang halaman.
 
-## Struktur Folder
-```
-index.html          halaman awal (mengarah ke beranda)
-pages/              halaman aplikasi
-assets/css/         variables, base, layout, components
-assets/js/          storage (pengganti database), utils, layout, skrip tiap halaman
-```
+
