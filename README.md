@@ -1,4 +1,4 @@
-# Rimbun: Aplikasi Pencatatan Tanaman dan Jadwal Perawatan
+# PlantCare: Aplikasi Pencatatan Tanaman dan Jadwal Perawatan
 
 Proyek PBL **PBLIF1-PB12**, Program Studi Teknik Informatika, Politeknik Negeri Batam.
 
