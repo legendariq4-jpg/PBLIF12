@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlantCare — Masuk</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABEL WARNA
+       ========================================================================== */
+    :root {
+      --hijau: #1b3d2f;
+      --krem: #fdfbf5;
+      --pasir: #f1ead9;
+      --terakota: #d4694a;
+      --teks: #1b3d2f;
+      --abu: #6b7a70;
+    }
+
+    /* ==========================================================================
+       2. RESET & DASAR
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--teks);
+      background: var(--krem);
+    }
+
+    /* ==========================================================================
+       3. PANEL KIRI (SISI HIJAU)
+       ========================================================================== */
+    .sisi {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px;
+      background: var(--hijau);
+      color: var(--krem);
+    }
+
+    .sisi h1 {
+      max-width: 14ch;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      line-height: 1.2;
+    }
+
+    .sisi p {
+      max-width: 32ch;
+      line-height: 1.6;
+      color: #c9d6cc;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+    }
+
+    /* ==========================================================================
+       4. PANEL KANAN (FORM)
+       ========================================================================== */
+    main {
+      display: grid;
+      place-items: center;
+      padding: 32px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+    }
+
+    .sub {
+      margin-top: -8px;
+      color: var(--abu);
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    input {
+      padding: 12px 14px;
+      font: inherit;
+      color: var(--teks);
+      background: #fff;
+      border: 1px solid #d9d2bf;
+      border-radius: 10px;
+    }
+
+    input:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--terakota);
+      outline-offset: 2px;
+    }
+
+    /* ==========================================================================
+       5. TOMBOL & PESAN
+       ========================================================================== */
+    .btn {
+      padding: 13px;
+      font: inherit;
+      font-weight: 700;
+      color: #fff;
+      background: var(--terakota);
+      border: 0;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      filter: brightness(0.95);
+    }
+
+    .ganti {
+      padding: 0;
+      font: inherit;
+      font-weight: 700;
+      color: var(--terakota);
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .pesan {
+      min-height: 1.2em;
+      font-size: 0.9rem;
+      color: #b3402a;
+    }
+
+    .bawah {
+      font-size: 0.92rem;
+      text-align: center;
+      color: var(--abu);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ==========================================================================
+       6. RESPONSIVE
+       ========================================================================== */
+    @media (max-width: 760px) {
+      body {
+        grid-template-columns: 1fr;
+      }
+
+      .sisi {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Panel kiri -->
+  <aside class="sisi">
+    <div class="logo">PlantCare</div>
+
+    <div>
+      <h1>Tanamanmu menunggu dirawat.</h1>
+      <p style="margin-top:16px">Masuk untuk melihat jadwal penyiraman dan catatan perawatanmu.</p>
+    </div>
+
+    <span></span>
+  </aside>
+
+  <!-- Panel kanan: form masuk / daftar -->
+  <main>
+    <form id="form" novalidate>
+      <h2 id="judul">Masuk</h2>
+      <p class="sub" id="sub">Selamat datang kembali.</p>
+
+      <label id="rowNama" class="hidden">Nama
+        <input id="nama" type="text" autocomplete="name">
+      </label>
+
+      <label>Email
+        <input id="email" type="email" autocomplete="email" required>
+      </label>
+
+      <label>Kata sandi
+        <input id="sandi" type="password" autocomplete="current-password" minlength="6" required>
+      </label>
+
+      <p class="pesan" id="pesan" role="alert"></p>
+
+      <button class="btn" id="tombol" type="submit">Masuk</button>
+
+      <p class="bawah">
+        <span id="tanya">Belum punya akun?</span>
+        <button class="ganti" id="ganti" type="button">Daftar</button>
+      </p>
+    </form>
+  </main>
+
+  <script>
+    /* ==========================================================================
+       1. KONSTANTA & FUNGSI BANTU
+       ========================================================================== */
+    const USERS_KEY = 'plantcare_users';
+    const SESSION_KEY = 'plantcare_session';
+
+    let modeDaftar = false;
+
+    const $ = id => document.getElementById(id);
+
+    const baca = k => {
+      try {
+        return JSON.parse(localStorage.getItem(k));
+      } catch {
+        return null;
+      }
+    };
+
+    // Sudah login? langsung ke beranda
+    if (baca(SESSION_KEY)) location.replace('index.html');
+
+    // Mengubah teks menjadi hash SHA-256 (heksadesimal)
+    async function hash(teks) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(teks));
+
+      return [...new Uint8Array(buf)]
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    /* ==========================================================================
+       2. GANTI MODE (MASUK <-> DAFTAR)
+       ========================================================================== */
+    function aturMode(daftar) {
+      modeDaftar = daftar;
+
+      $('judul').textContent = daftar ? 'Buat akun' : 'Masuk';
+      $('sub').textContent = daftar ? 'Mulai catat perawatan tanamanmu.' : 'Selamat datang kembali.';
+      $('tombol').textContent = daftar ? 'Daftar' : 'Masuk';
+      $('tanya').textContent = daftar ? 'Sudah punya akun?' : 'Belum punya akun?';
+      $('ganti').textContent = daftar ? 'Masuk' : 'Daftar';
+
+      $('rowNama').classList.toggle('hidden', !daftar);
+      $('sandi').autocomplete = daftar ? 'new-password' : 'current-password';
+      $('pesan').textContent = '';
+    }
+
+    $('ganti').addEventListener('click', () => aturMode(!modeDaftar));
+
+    /* ==========================================================================
+       3. KIRIM FORM (MASUK / DAFTAR)
+       ========================================================================== */
+    $('form').addEventListener('submit', async e => {
+      e.preventDefault();
+
+      const email = $('email').value.trim().toLowerCase();
+      const sandi = $('sandi').value;
+      const nama = $('nama').value.trim();
+      const users = baca(USERS_KEY) || [];
+
+      // Validasi dasar
+      if (!email || !sandi) {
+        return $('pesan').textContent = 'Isi email dan kata sandi.';
+      }
+
+      if (sandi.length < 6) {
+        return $('pesan').textContent = 'Kata sandi minimal 6 karakter.';
+      }
+
+      const h = await hash(sandi);
+
+      if (modeDaftar) {
+        /* ---- Daftar akun baru ---- */
+        if (!nama) {
+          return $('pesan').textContent = 'Isi namamu.';
+        }
+
+        if (users.some(u => u.email === email)) {
+          return $('pesan').textContent = 'Email ini sudah terdaftar. Silakan masuk.';
+        }
+
+        users.push({ nama, email, sandi: h });
+
+        localStorage.setItem(USERS_KEY, JSON.stringify(users));
+        localStorage.setItem(SESSION_KEY, JSON.stringify({ nama, email }));
+
+      } else {
+        /* ---- Masuk ke akun yang ada ---- */
+        const u = users.find(u => u.email === email && u.sandi === h);
+
+        if (!u) {
+          return $('pesan').textContent = 'Email atau kata sandi salah.';
+        }
+
+        localStorage.setItem(SESSION_KEY, JSON.stringify({ nama: u.nama, email: u.email }));
+      }
+
+      location.href = 'index.html';
+    });
+  </script>
+
+</body>
+
+</html>
